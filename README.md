@@ -1,7 +1,7 @@
 # BREADTH-FIRST-SEARCH
 <h1>ExpNo 3 : Implement Breadth First Search Traversal of a Graph</h1> 
-<h3>Name:  </h3>
-<h3>Register Number: </h3>
+<h3>Name: KIRUTHIGA.B </h3>
+<h3>Register Number: 212224040160</h3>
 <H3>Aim:</H3>
 <p>To Implement Breadth First Search Traversal of a Graph using Python 3.</p>
 <h3>Theory:</h3>
@@ -102,6 +102,56 @@ G F <BR>
 <h3>Sample Output</h3>
 <hr>
 ['0', '1', '2', '3', '4']
+
+<H3>PROGRAM</H3>
+<pre><code>
+
+from collections import deque
+
+def bfs(graph, start):
+    visited = []
+    queue = deque([start])
+    
+    while queue:
+        node = queue.popleft()
+        if node not in visited:
+            visited.append(node)
+            # Add unvisited neighbors to queue
+            for neighbor in graph.get(node, []):
+                if neighbor not in visited:
+                    queue.append(neighbor)
+    return visited
+n, e = map(int, input("Enter number of nodes and edges: ").split())
+graph = {}
+
+for _ in range(e):
+    while True:
+        line = input().strip()
+        if line:  # Skip blank lines
+            break
+    u, v = line.split()
+    if u not in graph:
+        graph[u] = []
+    if v not in graph:
+        graph[v] = []
+    graph[u].append(v)
+    # If undirected graph, uncomment next line
+    # graph[v].append(u)
+
+start_node = list(graph.keys())[0]
+traversal = bfs(graph, start_node)
+print(traversal)
+</code></pre>
+
+<H3>OUTPUT</H3>
+
+<img width="442" height="381" alt="Screenshot 2026-02-23 110113" src="https://github.com/user-attachments/assets/83d66ed4-bbd9-4c4e-8b10-2a3e448a7ba1" />
+<br>
+
+
+<img width="498" height="354" alt="Screenshot 2026-02-23 110004" src="https://github.com/user-attachments/assets/1e2c2f1f-6def-475b-b38b-c1ecd75eee0d" />
+
+
 <hr>
 <h3>Result:</h3>
 <hr>
